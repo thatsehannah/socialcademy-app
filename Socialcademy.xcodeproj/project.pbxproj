@@ -15,6 +15,8 @@
 		BDA55BCA29E5CA17009D40B9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BDA55BC929E5CA17009D40B9 /* FirebaseFirestore */; };
 		BDA55BCC29E5CA17009D40B9 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BDA55BCB29E5CA17009D40B9 /* FirebaseFirestoreSwift */; };
 		BDA55BD629E5D2B1009D40B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDA55BD529E5D2B1009D40B9 /* GoogleService-Info.plist */; };
+		BDA55BD929E5D4FE009D40B9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55BD829E5D4FE009D40B9 /* Post.swift */; };
+		BDA55BDD29E5D602009D40B9 /* PostsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55BDC29E5D602009D40B9 /* PostsList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		BDA55BBA29E5C903009D40B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDA55BBD29E5C903009D40B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BDA55BD529E5D2B1009D40B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BDA55BD829E5D4FE009D40B9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		BDA55BDC29E5D602009D40B9 /* PostsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 		BDA55BB529E5C903009D40B9 /* Socialcademy */ = {
 			isa = PBXGroup;
 			children = (
+				BDA55BD729E5D4EA009D40B9 /* Models */,
 				BDA55BB629E5C903009D40B9 /* SocialcademyApp.swift */,
 				BDA55BC429E5C95B009D40B9 /* Views */,
 				BDA55BC529E5C963009D40B9 /* Resources */,
@@ -78,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				BDA55BB829E5C903009D40B9 /* ContentView.swift */,
+				BDA55BDC29E5D602009D40B9 /* PostsList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -90,6 +96,14 @@
 				BDA55BBC29E5C903009D40B9 /* Preview Content */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		BDA55BD729E5D4EA009D40B9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BDA55BD829E5D4FE009D40B9 /* Post.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,8 +185,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDA55BD929E5D4FE009D40B9 /* Post.swift in Sources */,
 				BDA55BB929E5C903009D40B9 /* ContentView.swift in Sources */,
 				BDA55BB729E5C903009D40B9 /* SocialcademyApp.swift in Sources */,
+				BDA55BDD29E5D602009D40B9 /* PostsList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
