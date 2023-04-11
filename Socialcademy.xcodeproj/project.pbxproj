@@ -15,7 +15,6 @@
 		BDA55BCA29E5CA17009D40B9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BDA55BC929E5CA17009D40B9 /* FirebaseFirestore */; };
 		BDA55BCC29E5CA17009D40B9 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BDA55BCB29E5CA17009D40B9 /* FirebaseFirestoreSwift */; };
 		BDA55BD029E5CAAA009D40B9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BDA55BCF29E5CAAA009D40B9 /* .gitignore */; };
-		BDA55BD229E5CDD4009D40B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDA55BD129E5CDD4009D40B9 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +24,6 @@
 		BDA55BBA29E5C903009D40B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDA55BBD29E5C903009D40B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BDA55BCF29E5CAAA009D40B9 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		BDA55BD129E5CDD4009D40B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +86,6 @@
 		BDA55BC529E5C963009D40B9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BDA55BD129E5CDD4009D40B9 /* GoogleService-Info.plist */,
 				BDA55BBA29E5C903009D40B9 /* Assets.xcassets */,
 				BDA55BBC29E5C903009D40B9 /* Preview Content */,
 			);
@@ -162,7 +159,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDA55BD029E5CAAA009D40B9 /* .gitignore in Resources */,
-				BDA55BD229E5CDD4009D40B9 /* GoogleService-Info.plist in Resources */,
 				BDA55BBE29E5C903009D40B9 /* Preview Assets.xcassets in Resources */,
 				BDA55BBB29E5C903009D40B9 /* Assets.xcassets in Resources */,
 			);
