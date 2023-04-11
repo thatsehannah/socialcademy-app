@@ -14,7 +14,6 @@
 		BDA55BC829E5CA17009D40B9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BDA55BC729E5CA17009D40B9 /* FirebaseAnalytics */; };
 		BDA55BCA29E5CA17009D40B9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BDA55BC929E5CA17009D40B9 /* FirebaseFirestore */; };
 		BDA55BCC29E5CA17009D40B9 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BDA55BCB29E5CA17009D40B9 /* FirebaseFirestoreSwift */; };
-		BDA55BD029E5CAAA009D40B9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BDA55BCF29E5CAAA009D40B9 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +22,6 @@
 		BDA55BB829E5C903009D40B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BDA55BBA29E5C903009D40B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDA55BBD29E5C903009D40B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BDA55BCF29E5CAAA009D40B9 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +41,6 @@
 		BDA55BAA29E5C903009D40B9 = {
 			isa = PBXGroup;
 			children = (
-				BDA55BCF29E5CAAA009D40B9 /* .gitignore */,
 				BDA55BB529E5C903009D40B9 /* Socialcademy */,
 				BDA55BB429E5C903009D40B9 /* Products */,
 			);
@@ -158,7 +155,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDA55BD029E5CAAA009D40B9 /* .gitignore in Resources */,
 				BDA55BBE29E5C903009D40B9 /* Preview Assets.xcassets in Resources */,
 				BDA55BBB29E5C903009D40B9 /* Assets.xcassets in Resources */,
 			);
