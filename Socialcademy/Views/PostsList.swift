@@ -12,7 +12,7 @@ struct PostsList: View {
     var body: some View {
         NavigationView {
             List(posts) { post in
-                Text(post.content)
+                PostRow(post: post)
             }
             .navigationTitle("Posts")
         }
