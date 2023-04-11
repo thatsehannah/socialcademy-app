@@ -52,9 +52,8 @@
 			isa = PBXGroup;
 			children = (
 				BDA55BB629E5C903009D40B9 /* SocialcademyApp.swift */,
-				BDA55BB829E5C903009D40B9 /* ContentView.swift */,
-				BDA55BBA29E5C903009D40B9 /* Assets.xcassets */,
-				BDA55BBC29E5C903009D40B9 /* Preview Content */,
+				BDA55BC429E5C95B009D40B9 /* Views */,
+				BDA55BC529E5C963009D40B9 /* Resources */,
 			);
 			path = Socialcademy;
 			sourceTree = "<group>";
@@ -65,6 +64,23 @@
 				BDA55BBD29E5C903009D40B9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BDA55BC429E5C95B009D40B9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BDA55BB829E5C903009D40B9 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BDA55BC529E5C963009D40B9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BDA55BBA29E5C903009D40B9 /* Assets.xcassets */,
+				BDA55BBC29E5C903009D40B9 /* Preview Content */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
