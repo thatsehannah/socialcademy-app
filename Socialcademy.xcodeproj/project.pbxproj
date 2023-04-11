@@ -14,6 +14,7 @@
 		BDA55BC829E5CA17009D40B9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = BDA55BC729E5CA17009D40B9 /* FirebaseAnalytics */; };
 		BDA55BCA29E5CA17009D40B9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = BDA55BC929E5CA17009D40B9 /* FirebaseFirestore */; };
 		BDA55BCC29E5CA17009D40B9 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BDA55BCB29E5CA17009D40B9 /* FirebaseFirestoreSwift */; };
+		BDA55BD629E5D2B1009D40B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDA55BD529E5D2B1009D40B9 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		BDA55BB829E5C903009D40B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BDA55BBA29E5C903009D40B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDA55BBD29E5C903009D40B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BDA55BD529E5D2B1009D40B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		BDA55BC529E5C963009D40B9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BDA55BD529E5D2B1009D40B9 /* GoogleService-Info.plist */,
 				BDA55BBA29E5C903009D40B9 /* Assets.xcassets */,
 				BDA55BBC29E5C903009D40B9 /* Preview Content */,
 			);
@@ -157,6 +160,7 @@
 			files = (
 				BDA55BBE29E5C903009D40B9 /* Preview Assets.xcassets in Resources */,
 				BDA55BBB29E5C903009D40B9 /* Assets.xcassets in Resources */,
+				BDA55BD629E5D2B1009D40B9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
