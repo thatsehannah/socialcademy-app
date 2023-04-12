@@ -19,6 +19,7 @@
 		BDA55BDD29E5D602009D40B9 /* PostsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55BDC29E5D602009D40B9 /* PostsList.swift */; };
 		BDA55BDF29E5E164009D40B9 /* PostRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55BDE29E5E164009D40B9 /* PostRow.swift */; };
 		BDA55C0329E6E795009D40B9 /* NewPostForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55C0229E6E795009D40B9 /* NewPostForm.swift */; };
+		BDA55C0629E70AEB009D40B9 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55C0529E70AEB009D40B9 /* PostsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		BDA55BDC29E5D602009D40B9 /* PostsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsList.swift; sourceTree = "<group>"; };
 		BDA55BDE29E5E164009D40B9 /* PostRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRow.swift; sourceTree = "<group>"; };
 		BDA55C0229E6E795009D40B9 /* NewPostForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostForm.swift; sourceTree = "<group>"; };
+		BDA55C0529E70AEB009D40B9 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 		BDA55BB529E5C903009D40B9 /* Socialcademy */ = {
 			isa = PBXGroup;
 			children = (
+				BDA55C0429E70AD6009D40B9 /* ViewModels */,
 				BDA55BD729E5D4EA009D40B9 /* Models */,
 				BDA55BB629E5C903009D40B9 /* SocialcademyApp.swift */,
 				BDA55BC429E5C95B009D40B9 /* Views */,
@@ -110,6 +113,14 @@
 				BDA55BD829E5D4FE009D40B9 /* Post.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BDA55C0429E70AD6009D40B9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BDA55C0529E70AEB009D40B9 /* PostsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +208,7 @@
 				BDA55BB729E5C903009D40B9 /* SocialcademyApp.swift in Sources */,
 				BDA55C0329E6E795009D40B9 /* NewPostForm.swift in Sources */,
 				BDA55BDD29E5D602009D40B9 /* PostsList.swift in Sources */,
+				BDA55C0629E70AEB009D40B9 /* PostsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
