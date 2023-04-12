@@ -15,13 +15,22 @@ struct PostsList: View {
     var body: some View {
         NavigationView {
             Group {
-                switch viewModel.posts {
+                switch viewModel.loadingState {
                 case .loading:
                     ProgressView()
-                case .error(_):
-                    Text("Cannot Load Posts")
+                case .error(let error):
+                    EmptyListView(
+                        title: "Cannot Load Posts",
+                        message: error.localizedDescription,
+                        retryAction: {
+                            viewModel.fetchPosts()
+                        }
+                    )
                 case .empty:
-                    Text("No Posts")
+                   EmptyListView(
+                        title: "No Posts",
+                        message: "There aren't any posts yet."
+                   )
                 case let .loaded(posts):
                     List {
                         ForEach(posts.filter {searchText.isEmpty || $0.contains(searchText)} ) { post in
