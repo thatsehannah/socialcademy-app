@@ -10,6 +10,7 @@ import SwiftUI
 struct PostsList: View {
     private var posts: [Post] = [Post.testPost]
     @State private var searchText = ""
+    @State private var showNewPostForm = false
     
     var body: some View {
         NavigationView {
@@ -20,9 +21,17 @@ struct PostsList: View {
             }
             .navigationTitle("Posts")
             .searchable(text: $searchText)
+            .toolbar {
+                Button {
+                    showNewPostForm = true
+                } label: {
+                    Label("New Post", systemImage: "square.and.pencil")
+                }
+            }
         }
-        
-        
+        .sheet(isPresented: $showNewPostForm) {
+            NewPostForm(createAction: {_ in})
+        }
     }
 }
 
