@@ -14,13 +14,25 @@ struct PostsList: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(viewModel.posts.filter {searchText.isEmpty || $0.contains(searchText)} ) { post in
-                    PostRow(post: post)
+            Group {
+                switch viewModel.posts {
+                case .loading:
+                    ProgressView()
+                case .error(_):
+                    Text("Cannot Load Posts")
+                case .empty:
+                    Text("No Posts")
+                case let .loaded(posts):
+                    List {
+                        ForEach(posts.filter {searchText.isEmpty || $0.contains(searchText)} ) { post in
+                            PostRow(post: post)
+                        }
+                    }
+                    .searchable(text: $searchText)
                 }
+                
             }
             .navigationTitle("Posts")
-            .searchable(text: $searchText)
             .toolbar {
                 Button {
                     showNewPostForm = true
@@ -28,12 +40,12 @@ struct PostsList: View {
                     Label("New Post", systemImage: "square.and.pencil")
                 }
             }
+            .sheet(isPresented: $showNewPostForm) {
+                NewPostForm(createAction: viewModel.makeCreateAction())
+            }
         }
         .onAppear {
             viewModel.fetchPosts()
-        }
-        .sheet(isPresented: $showNewPostForm) {
-            NewPostForm(createAction: viewModel.makeCreateAction())
         }
     }
 }
