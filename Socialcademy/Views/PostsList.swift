@@ -9,12 +9,17 @@ import SwiftUI
 
 struct PostsList: View {
     private var posts: [Post] = [Post.testPost]
+    @State private var searchText = ""
+    
     var body: some View {
         NavigationView {
-            List(posts) { post in
-                PostRow(post: post)
+            List {
+                ForEach(posts.filter {searchText.isEmpty || $0.contains(searchText)} ) { post in
+                    PostRow(post: post)
+                }
             }
             .navigationTitle("Posts")
+            .searchable(text: $searchText)
         }
         
         
