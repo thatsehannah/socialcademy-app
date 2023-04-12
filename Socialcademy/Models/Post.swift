@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Post: Identifiable {
+struct Post: Identifiable, Codable {
     var id = UUID()
     var title, content, authorName: String
     var timestamp = Date()
