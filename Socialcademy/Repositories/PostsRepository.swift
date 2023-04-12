@@ -17,6 +17,16 @@ struct PostsRepository {
         let document = postsReference.document(post.id.uuidString) //uses the post's UUID string as a document path
         try await document.setData(from: post)
     }
+    
+    //fetches all of the posts from Firestore and return them in an array full of Post objects
+    static func fetchPosts() async throws -> [Post] {
+        let snapshot = try await postsReference
+            .order(by: "timestamp", descending: true)
+            .getDocuments()
+        return snapshot.documents.compactMap { document in
+            try! document.data(as: Post.self)
+        }
+    }
 }
 
 private extension DocumentReference {
