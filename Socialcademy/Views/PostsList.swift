@@ -34,7 +34,7 @@ struct PostsList: View {
                 case let .loaded(posts):
                     List {
                         ForEach(posts.filter {searchText.isEmpty || $0.contains(searchText)} ) { post in
-                            PostRow(post: post)
+                            PostRow(post: post, deleteAction: viewModel.makeDeleteAction(for: post))
                         }
                     }
                     .searchable(text: $searchText)

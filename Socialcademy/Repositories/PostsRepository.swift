@@ -12,6 +12,7 @@ import FirebaseFirestoreSwift
 protocol PostsRepositoryProtocol {
     func fetchPosts() async throws -> [Post]
     func create(_ post: Post) async throws
+    func delete(_ post: Post) async throws
 }
 
 struct PostsRepository: PostsRepositoryProtocol {
@@ -31,6 +32,12 @@ struct PostsRepository: PostsRepositoryProtocol {
         return snapshot.documents.compactMap { document in
             try! document.data(as: Post.self)
         }
+    }
+    
+    //deletes the given post in the posts collection
+    func delete(_ post: Post) async throws {
+        let document = postsReference.document(post.id.uuidString)
+        try await document.delete()
     }
 }
 
@@ -65,5 +72,8 @@ struct PostsRepositoryStub: PostsRepositoryProtocol {
     
     //does nothing
     func create(_ post: Post) async throws {}
+    
+    //also does nothing
+    func delete(_ post: Post) async throws {}
 }
 #endif

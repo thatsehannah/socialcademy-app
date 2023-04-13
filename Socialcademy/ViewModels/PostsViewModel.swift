@@ -33,4 +33,11 @@ class PostsViewModel: ObservableObject {
             }
         }
     }
+    
+    func makeDeleteAction(for post: Post) -> PostRow.DeleteAction {
+        return { [weak self] in
+            try await self?.postsRepository.delete(post)
+            self?.loadingState.value?.removeAll { $0.id == post.id }
+        }
+    }
 }

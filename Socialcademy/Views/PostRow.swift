@@ -8,7 +8,16 @@
 import SwiftUI
 
 struct PostRow: View {
+    typealias DeleteAction = () async throws -> Void
+    
     let post: Post
+    let deleteAction: DeleteAction
+    
+    private func deletePost() {
+        Task {
+            try! await deleteAction()
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -24,15 +33,23 @@ struct PostRow: View {
                 .font(.title3)
                 .fontWeight(.semibold)
             Text(post.content)
+            HStack {
+                Spacer()
+                Button(role: .destructive, action: deletePost) {
+                    Label("Delete", systemImage: "trash")
+                }
+                .labelStyle(.iconOnly)
+            }
         }
         .padding(.vertical)
+        
     }
 }
 
 struct PostRow_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            PostRow(post: Post.testPost)
+            PostRow(post: Post.testPost, deleteAction: {})
         }
         
     }
