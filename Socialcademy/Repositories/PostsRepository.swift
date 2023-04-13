@@ -9,17 +9,22 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-struct PostsRepository {
-    static let postsReference = Firestore.firestore().collection("posts")
+protocol PostsRepositoryProtocol {
+    func fetchPosts() async throws -> [Post]
+    func create(_ post: Post) async throws
+}
+
+struct PostsRepository: PostsRepositoryProtocol {
+    let postsReference = Firestore.firestore().collection("posts")
     
     //creates the given post in the posts collection
-    static func create(_ post: Post) async throws {
+    func create(_ post: Post) async throws {
         let document = postsReference.document(post.id.uuidString) //uses the post's UUID string as a document path
         try await document.setData(from: post)
     }
     
     //fetches all of the posts from Firestore and return them in an array full of Post objects
-    static func fetchPosts() async throws -> [Post] {
+    func fetchPosts() async throws -> [Post] {
         let snapshot = try await postsReference
             .order(by: "timestamp", descending: true)
             .getDocuments()
@@ -48,3 +53,17 @@ private extension DocumentReference {
         }
     }
 }
+
+#if DEBUG //directive which means the code will only be compiled in debug builds of the app
+struct PostsRepositoryStub: PostsRepositoryProtocol {
+    let state: Loadable<[Post]>
+                            
+    //returns an empty array
+    func fetchPosts() async throws -> [Post] {
+        return try await state.simulate()
+    }
+    
+    //does nothing
+    func create(_ post: Post) async throws {}
+}
+#endif

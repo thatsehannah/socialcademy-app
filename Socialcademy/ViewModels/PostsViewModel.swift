@@ -9,11 +9,16 @@ import Foundation
 
 @MainActor
 class PostsViewModel: ObservableObject {
+    private let postsRepository: PostsRepositoryProtocol
     @Published var loadingState: Loadable<[Post]> = .loading
+    
+    init(postsRepository: PostsRepositoryProtocol = PostsRepository()) {
+        self.postsRepository = postsRepository
+    }
     
     func makeCreateAction() -> NewPostForm.CreateAction {
         return { [weak self] post in
-            try await PostsRepository.create(post)
+            try await self?.postsRepository.create(post)
             self?.loadingState.value?.insert(post, at: 0)
         }
     }
@@ -21,7 +26,7 @@ class PostsViewModel: ObservableObject {
     func fetchPosts() {
         Task {
             do {
-                loadingState = .loaded(try await PostsRepository.fetchPosts())
+                loadingState = .loaded(try await postsRepository.fetchPosts())
             } catch {
                 print("[PostsViewModel] Cannot fetch posts: \(error)")
                 loadingState = .error(error)
