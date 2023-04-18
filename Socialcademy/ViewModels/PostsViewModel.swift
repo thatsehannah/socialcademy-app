@@ -34,10 +34,29 @@ class PostsViewModel: ObservableObject {
         }
     }
     
-    func makeDeleteAction(for post: Post) -> PostRow.DeleteAction {
+    func makeDeleteAction(for post: Post) -> PostRow.Action {
         return { [weak self] in
             try await self?.postsRepository.delete(post)
             self?.loadingState.value?.removeAll { $0.id == post.id }
         }
+    }
+    
+    func makeFavoriteAction(for post: Post) -> () async throws -> Void {
+        return { [weak self] in
+            //determines the new value of isFavorite, which is the opposite of its former value
+            let newValue = !post.isFavorite
+            
+            //calls the favorite method if newValue is true or the unfavorite method otherwise
+            try await newValue ? self?.postsRepository.favorite(post) : self?.postsRepository.unfavorite(post)
+            
+            //finds the post's index in the PostList
+            guard let index = self?.loadingState.value?.firstIndex(of: post) else {
+                return
+            }
+            
+            //sets the post's isFavorite property to newValue
+            self?.loadingState.value?[index].isFavorite = newValue
+        }
+        
     }
 }

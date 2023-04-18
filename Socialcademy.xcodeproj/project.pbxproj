@@ -22,6 +22,7 @@
 		BDA55C0929E715CE009D40B9 /* PostsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55C0829E715CE009D40B9 /* PostsRepository.swift */; };
 		BDA55C0C29E7583D009D40B9 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55C0B29E7583D009D40B9 /* Loadable.swift */; };
 		BDA55C0E29E77860009D40B9 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55C0D29E77860009D40B9 /* EmptyListView.swift */; };
+		BDA55C1029E8D2D6009D40B9 /* AlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55C0F29E8D2D6009D40B9 /* AlertError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		BDA55C0829E715CE009D40B9 /* PostsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRepository.swift; sourceTree = "<group>"; };
 		BDA55C0B29E7583D009D40B9 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		BDA55C0D29E77860009D40B9 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		BDA55C0F29E8D2D6009D40B9 /* AlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				BDA55BDE29E5E164009D40B9 /* PostRow.swift */,
 				BDA55C0229E6E795009D40B9 /* NewPostForm.swift */,
 				BDA55C0D29E77860009D40B9 /* EmptyListView.swift */,
+				BDA55C0F29E8D2D6009D40B9 /* AlertError.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				BDA55C0C29E7583D009D40B9 /* Loadable.swift in Sources */,
 				BDA55BDF29E5E164009D40B9 /* PostRow.swift in Sources */,
 				BDA55BB729E5C903009D40B9 /* SocialcademyApp.swift in Sources */,
+				BDA55C1029E8D2D6009D40B9 /* AlertError.swift in Sources */,
 				BDA55C0329E6E795009D40B9 /* NewPostForm.swift in Sources */,
 				BDA55BDD29E5D602009D40B9 /* PostsList.swift in Sources */,
 				BDA55C0629E70AEB009D40B9 /* PostsViewModel.swift in Sources */,

@@ -10,6 +10,7 @@ import Foundation
 struct Post: Identifiable, Codable, Equatable {
     var id = UUID()
     var title, content, authorName: String
+    var isFavorite = false
     var timestamp = Date()
     
     func contains(_ string: String) -> Bool {
