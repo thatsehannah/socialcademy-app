@@ -47,7 +47,7 @@ struct PostRow: View {
                 viewModel.deletePost()
             })
         }
-        
+        .alert("Error", error: $viewModel.error)
         
     }
 }

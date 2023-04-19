@@ -34,14 +34,14 @@ class PostsViewModel: ObservableObject {
         }
     }
     
-    func makeDeleteAction(for post: Post) -> PostRow.Action {
+    private func makeDeleteAction(for post: Post) -> () async throws -> Void {
         return { [weak self] in
             try await self?.postsRepository.delete(post)
             self?.loadingState.value?.removeAll { $0.id == post.id }
         }
     }
     
-    func makeFavoriteAction(for post: Post) -> () async throws -> Void {
+    private func makeFavoriteAction(for post: Post) -> () async throws -> Void {
         return { [weak self] in
             //determines the new value of isFavorite, which is the opposite of its former value
             let newValue = !post.isFavorite
@@ -57,6 +57,12 @@ class PostsViewModel: ObservableObject {
             //sets the post's isFavorite property to newValue
             self?.loadingState.value?[index].isFavorite = newValue
         }
-        
+    }
+    
+    func makePostRowViewModel(for post: Post) -> PostRowViewModel {
+        return PostRowViewModel(
+            post: post,
+            deleteAction: makeDeleteAction(for: post),
+            favoriteAction: makeFavoriteAction(for: post))
     }
 }
