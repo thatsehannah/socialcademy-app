@@ -23,6 +23,7 @@
 		BDA55C0C29E7583D009D40B9 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55C0B29E7583D009D40B9 /* Loadable.swift */; };
 		BDA55C0E29E77860009D40B9 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55C0D29E77860009D40B9 /* EmptyListView.swift */; };
 		BDA55C1029E8D2D6009D40B9 /* AlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55C0F29E8D2D6009D40B9 /* AlertError.swift */; };
+		BDD1255C29EF1A8700060355 /* PostRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1255B29EF1A8700060355 /* PostRowViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		BDA55C0B29E7583D009D40B9 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		BDA55C0D29E77860009D40B9 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		BDA55C0F29E8D2D6009D40B9 /* AlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertError.swift; sourceTree = "<group>"; };
+		BDD1255B29EF1A8700060355 /* PostRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRowViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				BDA55C0529E70AEB009D40B9 /* PostsViewModel.swift */,
+				BDD1255B29EF1A8700060355 /* PostRowViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDD1255C29EF1A8700060355 /* PostRowViewModel.swift in Sources */,
 				BDA55BD929E5D4FE009D40B9 /* Post.swift in Sources */,
 				BDA55C0929E715CE009D40B9 /* PostsRepository.swift in Sources */,
 				BDA55C0C29E7583D009D40B9 /* Loadable.swift in Sources */,
