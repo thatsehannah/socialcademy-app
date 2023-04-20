@@ -9,11 +9,28 @@ import Foundation
 
 @MainActor
 class PostsViewModel: ObservableObject {
+    enum PostFilter {
+        case all, favorites
+    }
+    
     private let postsRepository: PostsRepositoryProtocol
+    private let filter: PostFilter
+    
+    var title: String {
+        switch filter {
+        case .all:
+            return "All Posts"
+        case .favorites:
+            return "Favorites"
+        }
+    }
+    
     @Published var loadingState: Loadable<[Post]> = .loading
     
-    init(postsRepository: PostsRepositoryProtocol = PostsRepository()) {
+    //gave the the postsRepository and filter parameters default values
+    init(postsRepository: PostsRepositoryProtocol = PostsRepository(), filter: PostFilter = .all) {
         self.postsRepository = postsRepository
+        self.filter = filter
     }
     
     func makeCreateAction() -> NewPostForm.CreateAction {
@@ -26,7 +43,7 @@ class PostsViewModel: ObservableObject {
     func fetchPosts() {
         Task {
             do {
-                loadingState = .loaded(try await postsRepository.fetchAllPosts())
+                loadingState = .loaded(try await postsRepository.fetchPosts(matching: filter))
             } catch {
                 print("[PostsViewModel] Cannot fetch posts: \(error)")
                 loadingState = .error(error)
@@ -64,5 +81,16 @@ class PostsViewModel: ObservableObject {
             post: post,
             deleteAction: makeDeleteAction(for: post),
             favoriteAction: makeFavoriteAction(for: post))
+    }
+}
+
+private extension PostsRepositoryProtocol {
+    func fetchPosts(matching filter: PostsViewModel.PostFilter) async throws -> [Post] {
+        switch filter {
+        case .all:
+            return try await fetchAllPosts()
+        case .favorites:
+            return try await fetchFavoritedPosts()
+        }
     }
 }

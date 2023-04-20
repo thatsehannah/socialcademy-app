@@ -28,7 +28,7 @@ struct PostsRepository: PostsRepositoryProtocol {
     }
     
     private func fetchPosts(from query: Query) async throws -> [Post] {
-        let snapshot = try await query.getDocuments()
+        let snapshot = try await query.order(by: "timestamp", descending: true).getDocuments()
         let posts = snapshot.documents.compactMap { document in
             try! document.data(as: Post.self)
         }
@@ -37,14 +37,12 @@ struct PostsRepository: PostsRepositoryProtocol {
     
     //fetches all of the posts from Firestore and returns them in an array of Post objects
     func fetchAllPosts() async throws -> [Post] {
-        let query = postsReference.order(by: "timestamp", descending: true)
-        return try await fetchPosts(from: query)
+        return try await fetchPosts(from: postsReference)
     }
     
     //fetches all of the posts from Firestore where the isFavorite field is equal to true and returns them in an array of Post objects
     func fetchFavoritedPosts() async throws -> [Post] {
-        let query = postsReference.whereField("isFavorite", isEqualTo: true).order(by: "timestamp", descending: true)
-        return try await fetchPosts(from: query)
+        return try await fetchPosts(from: postsReference.whereField("isFavorite", isEqualTo: true))
     }
     
     //deletes the given post in the posts collection
