@@ -13,6 +13,7 @@
 		BD5EBCB129F585F700C24E8E /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5EBCB029F585F700C24E8E /* AuthViewModel.swift */; };
 		BD5EBCB729F59D4700C24E8E /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5EBCB629F59D4700C24E8E /* AuthView.swift */; };
 		BD5EBCB929F59DED00C24E8E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5EBCB829F59DED00C24E8E /* ProfileView.swift */; };
+		BD5EBCBD29F5AB6000C24E8E /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5EBCBC29F5AB6000C24E8E /* FormViewModel.swift */; };
 		BDA55BB729E5C903009D40B9 /* SocialcademyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55BB629E5C903009D40B9 /* SocialcademyApp.swift */; };
 		BDA55BBB29E5C903009D40B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDA55BBA29E5C903009D40B9 /* Assets.xcassets */; };
 		BDA55BBE29E5C903009D40B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDA55BBD29E5C903009D40B9 /* Preview Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		BD5EBCB029F585F700C24E8E /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		BD5EBCB629F59D4700C24E8E /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		BD5EBCB829F59DED00C24E8E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BD5EBCBC29F5AB6000C24E8E /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		BDA55BB329E5C903009D40B9 /* Socialcademy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Socialcademy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA55BB629E5C903009D40B9 /* SocialcademyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialcademyApp.swift; sourceTree = "<group>"; };
 		BDA55BBA29E5C903009D40B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				BDA55C0529E70AEB009D40B9 /* PostsViewModel.swift */,
 				BDD1255B29EF1A8700060355 /* PostRowViewModel.swift */,
 				BD5EBCB029F585F700C24E8E /* AuthViewModel.swift */,
+				BD5EBCBC29F5AB6000C24E8E /* FormViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				BD5EBCB129F585F700C24E8E /* AuthViewModel.swift in Sources */,
 				BD5EBCB729F59D4700C24E8E /* AuthView.swift in Sources */,
 				BDA55C0629E70AEB009D40B9 /* PostsViewModel.swift in Sources */,
+				BD5EBCBD29F5AB6000C24E8E /* FormViewModel.swift in Sources */,
 				BDA55C0E29E77860009D40B9 /* EmptyListView.swift in Sources */,
 				BD5EBCA929F0C81800C24E8E /* MainTabView.swift in Sources */,
 			);
