@@ -25,12 +25,61 @@ struct AuthView: View {
     }
 }
 
+//generic form to be used for auth forms
+private extension AuthView {
+    struct AuthForm<Content: View, Footer: View>: View {
+        @ViewBuilder let content: () -> Content
+        @ViewBuilder let footer: () -> Footer
+        
+        var body: some View {
+            VStack {
+                Text("Socialcademy")
+                    .font(.title.bold())
+                content()
+                    .padding()
+                    .background(Color.secondary.opacity(0.15))
+                    .cornerRadius(10)
+                footer()
+            }
+            .padding()
+            .navigationBarHidden(true)
+        }
+    }
+}
+
+//sign in form
+private extension AuthView {
+    struct SignInForm<Footer: View>: View {
+        @StateObject var viewModel: AuthViewModel.SignInViewModel
+        @ViewBuilder let footer: () -> Footer //closure that returns a view
+        
+        var body: some View {
+            AuthForm {
+                TextField("Email", text: $viewModel.email)
+                    .textContentType(.emailAddress)
+                    .textInputAutocapitalization(.never)
+                SecureField("Password", text: $viewModel.password)
+                    .textContentType(.password)
+            } footer: {
+                Button("Sign In", action: viewModel.submit)
+                    .buttonStyle(.primary)
+                footer()
+                    .padding()
+            }
+            .onSubmit(viewModel.submit)
+            .alert("Cannot Sign In", error: $viewModel.error)
+        }
+    }
+}
+
+//create account form
 private extension AuthView {
     struct CreateAccountForm: View {
+        @Environment(\.dismiss) private var dismiss
         @StateObject var viewModel: AuthViewModel.CreateAccountViewModel
         
         var body: some View {
-            Form {
+            AuthForm {
                 TextField("Name", text: $viewModel.name)
                     .textContentType(.name)
                     .textInputAutocapitalization(.words)
@@ -39,31 +88,14 @@ private extension AuthView {
                     .textInputAutocapitalization(.never)
                 SecureField("Password", text: $viewModel.password)
                     .textContentType(.newPassword)
+            } footer: {
                 Button("Create Account", action: viewModel.submit)
+                    .buttonStyle(.primary)
+                Button("Sign In", action: dismiss.callAsFunction)
+                    .padding()
             }
-            .navigationTitle("Create Account")
             .onSubmit(viewModel.submit)
-        }
-    }
-}
-
-private extension AuthView {
-    struct SignInForm<Footer: View>: View {
-        @StateObject var viewModel: AuthViewModel.SignInViewModel
-        @ViewBuilder let footer: () -> Footer //closure that returns a view
-        
-        var body: some View {
-            Form {
-                TextField("Email", text: $viewModel.email)
-                    .textContentType(.emailAddress)
-                    .textInputAutocapitalization(.never)
-                SecureField("Password", text: $viewModel.password)
-                    .textContentType(.password)
-                Button("Sign In", action: viewModel.submit)
-                footer()
-            }
-            .navigationTitle("Sign In")
-            .onSubmit(viewModel.submit)
+            .alert("Cannot Create Account", error: $viewModel.error)
         }
     }
 }

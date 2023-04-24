@@ -14,6 +14,7 @@
 		BD5EBCB729F59D4700C24E8E /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5EBCB629F59D4700C24E8E /* AuthView.swift */; };
 		BD5EBCB929F59DED00C24E8E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5EBCB829F59DED00C24E8E /* ProfileView.swift */; };
 		BD5EBCBD29F5AB6000C24E8E /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5EBCBC29F5AB6000C24E8E /* FormViewModel.swift */; };
+		BD5EBCBF29F5FC9300C24E8E /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5EBCBE29F5FC9300C24E8E /* PrimaryButtonStyle.swift */; };
 		BDA55BB729E5C903009D40B9 /* SocialcademyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55BB629E5C903009D40B9 /* SocialcademyApp.swift */; };
 		BDA55BBB29E5C903009D40B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDA55BBA29E5C903009D40B9 /* Assets.xcassets */; };
 		BDA55BBE29E5C903009D40B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDA55BBD29E5C903009D40B9 /* Preview Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		BD5EBCB629F59D4700C24E8E /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		BD5EBCB829F59DED00C24E8E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BD5EBCBC29F5AB6000C24E8E /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
+		BD5EBCBE29F5FC9300C24E8E /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		BDA55BB329E5C903009D40B9 /* Socialcademy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Socialcademy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA55BB629E5C903009D40B9 /* SocialcademyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialcademyApp.swift; sourceTree = "<group>"; };
 		BDA55BBA29E5C903009D40B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				BD5EBCA829F0C81800C24E8E /* MainTabView.swift */,
 				BD5EBCB629F59D4700C24E8E /* AuthView.swift */,
 				BD5EBCB829F59DED00C24E8E /* ProfileView.swift */,
+				BD5EBCBE29F5FC9300C24E8E /* PrimaryButtonStyle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD5EBCBF29F5FC9300C24E8E /* PrimaryButtonStyle.swift in Sources */,
 				BDD1255C29EF1A8700060355 /* PostRowViewModel.swift in Sources */,
 				BDA55BD929E5D4FE009D40B9 /* Post.swift in Sources */,
 				BDA55C0929E715CE009D40B9 /* PostsRepository.swift in Sources */,
