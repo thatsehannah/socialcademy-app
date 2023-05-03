@@ -28,16 +28,9 @@ class PostsViewModel: ObservableObject {
     @Published var loadingState: Loadable<[Post]> = .loading
     
     //gave the the postsRepository and filter parameters default values
-    init(postsRepository: PostsRepositoryProtocol = PostsRepository(), filter: PostFilter = .all) {
+    init(postsRepository: PostsRepositoryProtocol, filter: PostFilter = .all) {
         self.postsRepository = postsRepository
         self.filter = filter
-    }
-    
-    func makeCreateAction() -> NewPostForm.CreateAction {
-        return { [weak self] post in
-            try await self?.postsRepository.create(post)
-            self?.loadingState.value?.insert(post, at: 0)
-        }
     }
     
     func fetchPosts() {
@@ -51,36 +44,30 @@ class PostsViewModel: ObservableObject {
         }
     }
     
-    private func makeDeleteAction(for post: Post) -> () async throws -> Void {
-        return { [weak self] in
-            try await self?.postsRepository.delete(post)
-            self?.loadingState.value?.removeAll { $0.id == post.id }
-        }
-    }
-    
-    private func makeFavoriteAction(for post: Post) -> () async throws -> Void {
-        return { [weak self] in
-            //determines the new value of isFavorite, which is the opposite of its former value
-            let newValue = !post.isFavorite
-            
-            //calls the favorite method if newValue is true or the unfavorite method otherwise
-            try await newValue ? self?.postsRepository.favorite(post) : self?.postsRepository.unfavorite(post)
-            
-            //finds the post's index in the PostList
-            guard let index = self?.loadingState.value?.firstIndex(of: post) else {
-                return
-            }
-            
-            //sets the post's isFavorite property to newValue
-            self?.loadingState.value?[index].isFavorite = newValue
-        }
-    }
-    
     func makePostRowViewModel(for post: Post) -> PostRowViewModel {
+        let deleteAction = { [weak self] in
+            try await self?.postsRepository.delete(post)
+            self?.loadingState.value?.removeAll { $0 == post}
+        }
+        
+        let favoriteAction = { [weak self] in
+            let newValue = !post.isFavorite
+            try await newValue ? self?.postsRepository.favorite(post) : self?.postsRepository.unfavorite(post)
+            guard let i = self?.loadingState.value?.firstIndex(of: post) else { return }
+            self?.loadingState.value?[i].isFavorite = newValue
+        }
+        
         return PostRowViewModel(
             post: post,
-            deleteAction: makeDeleteAction(for: post),
-            favoriteAction: makeFavoriteAction(for: post))
+            deleteAction: postsRepository.canDelete(post) ? deleteAction : nil,
+            favoriteAction: favoriteAction)
+    }
+    
+    func makeNewPostViewModel() -> FormViewModel<Post> {
+        return FormViewModel(initialValue: Post(title: "", content: "", author: postsRepository.currentUser), action: { [weak self] post in
+            try await self?.postsRepository.create(post)
+            self?.loadingState.value?.insert(post, at: 0)
+        })
     }
 }
 

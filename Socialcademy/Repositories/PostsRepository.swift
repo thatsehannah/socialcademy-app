@@ -16,10 +16,13 @@ protocol PostsRepositoryProtocol {
     func delete(_ post: Post) async throws
     func favorite(_ post: Post) async throws
     func unfavorite(_ post: Post) async throws
+    var currentUser: User { get }
 }
 
 struct PostsRepository: PostsRepositoryProtocol {
-    let postsReference = Firestore.firestore().collection("posts_v1")
+    let currentUser: User
+    
+    let postsReference = Firestore.firestore().collection("posts_v2")
     
     //creates the given post in the posts collection
     func create(_ post: Post) async throws {
@@ -47,6 +50,7 @@ struct PostsRepository: PostsRepositoryProtocol {
     
     //deletes the given post in the posts collection
     func delete(_ post: Post) async throws {
+        precondition(canDelete(post))
         let document = postsReference.document(post.id.uuidString)
         try await document.delete()
     }
@@ -84,6 +88,8 @@ private extension DocumentReference {
 
 #if DEBUG //directive which means the code will only be compiled in debug builds of the app
 struct PostsRepositoryStub: PostsRepositoryProtocol {
+    var currentUser = User.testUser
+    
     let state: Loadable<[Post]>
                             
     //returns an empty array
@@ -107,3 +113,9 @@ struct PostsRepositoryStub: PostsRepositoryProtocol {
     func unfavorite(_ post: Post) async throws {}
 }
 #endif
+
+extension PostsRepositoryProtocol {
+    func canDelete(_ post: Post) -> Bool {
+        post.author.id == currentUser.id //returns true when the post's author ID mathches the ID of the current user
+    }
+}

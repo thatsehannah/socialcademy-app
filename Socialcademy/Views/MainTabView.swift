@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject private var viewModelFactory: ViewModelFactory
+    
     var body: some View {
         TabView {
-            PostsList() //using the default values
+            PostsList(viewModel: viewModelFactory.makePostsViewModel())
                 .tabItem {
                     Label("Posts", systemImage: "list.dash")
                 }
-            PostsList(viewModel: PostsViewModel(filter: .favorites))
+            PostsList(viewModel: viewModelFactory.makePostsViewModel(filter: .favorites))
                 .tabItem {
                     Label("Favorites", systemImage: "heart")
                 }
@@ -28,6 +30,6 @@ struct MainTabView: View {
 
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView()
+        MainTabView().environmentObject(ViewModelFactory.preview)
     }
 }

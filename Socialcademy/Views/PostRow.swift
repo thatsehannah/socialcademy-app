@@ -15,7 +15,7 @@ struct PostRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text(viewModel.authorName)
+                Text(viewModel.author.name)
                     .font(.subheadline)
                     .fontWeight(.medium)
                 Spacer()
@@ -31,12 +31,13 @@ struct PostRow: View {
                     viewModel.favoritePost()
                 })
                 Spacer()
-                Button(role: .destructive, action: {
-                    showConfirmationDialog = true
-                }) {
-                    Label("Delete", systemImage: "trash")
+                if viewModel.canDeletePost {
+                    Button(role: .destructive, action: {
+                        showConfirmationDialog = true
+                    }) {
+                        Label("Delete", systemImage: "trash")
+                    }
                 }
-                
             }
             .labelStyle(.iconOnly)
             .buttonStyle(.borderless)
