@@ -25,7 +25,9 @@ class AuthService: ObservableObject {
     //creates an account with the given email and password. Then, when the account is created, it updates the account with the given name
     func createAccount(name: String, email: String, password: String) async throws {
         let result = try await auth.createUser(withEmail: email, password: password)
-        try await result.user.updateProfile(\.displayName, to: name)
+        let changeRequest = result.user.createProfileChangeRequest()
+        changeRequest.displayName = name
+        try await changeRequest.commitChanges()
         user?.name = name
     }
     
@@ -49,6 +51,6 @@ private extension FirebaseAuth.User {
 private extension User {
     init(from firebaseUser: FirebaseAuth.User) {
         self.id = firebaseUser.uid
-        self.name = firebaseUser.displayName ?? ""
+        self.name = firebaseUser.displayName ?? "No username"
     }
 }

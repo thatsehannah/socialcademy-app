@@ -10,7 +10,7 @@ import Foundation
 @MainActor
 class PostsViewModel: ObservableObject {
     enum PostFilter {
-        case all, favorites
+        case all, author(User), favorites
     }
     
     private let postsRepository: PostsRepositoryProtocol
@@ -20,6 +20,8 @@ class PostsViewModel: ObservableObject {
         switch filter {
         case .all:
             return "All Posts"
+        case .author(let author):
+            return "\(author.name)'s Posts"
         case .favorites:
             return "Favorites"
         }
@@ -76,6 +78,8 @@ private extension PostsRepositoryProtocol {
         switch filter {
         case .all:
             return try await fetchAllPosts()
+        case .author(let author):
+            return try await fetchPosts(by: author)
         case .favorites:
             return try await fetchFavoritedPosts()
         }

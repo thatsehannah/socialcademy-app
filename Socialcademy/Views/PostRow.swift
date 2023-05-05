@@ -15,9 +15,7 @@ struct PostRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text(viewModel.author.name)
-                    .font(.subheadline)
-                    .fontWeight(.medium)
+                AuthorView(author: viewModel.author)
                 Spacer()
                 Text(viewModel.timestamp.formatted(date:.abbreviated, time: .omitted))
             }
@@ -40,9 +38,8 @@ struct PostRow: View {
                 }
             }
             .labelStyle(.iconOnly)
-            .buttonStyle(.borderless)
         }
-        .padding(.vertical)
+        .padding()
         .confirmationDialog("Are you sure you want to delete this post?", isPresented: $showConfirmationDialog, titleVisibility: .visible) {
             Button("Delete", role: .destructive, action: {
                 viewModel.deletePost()
@@ -72,11 +69,28 @@ private extension PostRow {
     }
 }
 
+private extension PostRow {
+    struct AuthorView: View {
+        let author: User
+        
+        @EnvironmentObject private var factory: ViewModelFactory
+        
+        var body: some View {
+            NavigationLink {
+                PostsList(viewModel: factory.makePostsViewModel(filter: .author(author)))
+            } label: {
+                Text(author.name)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+            }
+        }
+    }
+}
+
 struct PostRow_Previews: PreviewProvider {
     static var previews: some View {
-        List {
-            PostRow(viewModel: PostRowViewModel(post: Post.testPost, deleteAction: {}, favoriteAction: {}))
-        }
-        
+        PostRow(viewModel: PostRowViewModel(post: Post.testPost, deleteAction: {}, favoriteAction: {}))
+            .environmentObject(ViewModelFactory.preview)
+            .previewLayout(.sizeThatFits)
     }
 }

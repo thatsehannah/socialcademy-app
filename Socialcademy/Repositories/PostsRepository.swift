@@ -12,6 +12,7 @@ import FirebaseFirestoreSwift
 protocol PostsRepositoryProtocol {
     func fetchAllPosts() async throws -> [Post]
     func fetchFavoritedPosts() async throws -> [Post]
+    func fetchPosts(by author: User) async throws -> [Post]
     func create(_ post: Post) async throws
     func delete(_ post: Post) async throws
     func favorite(_ post: Post) async throws
@@ -23,19 +24,12 @@ struct PostsRepository: PostsRepositoryProtocol {
     let currentUser: User
     
     let postsReference = Firestore.firestore().collection("posts_v2")
+    let favoritesReference = Firestore.firestore().collection("favorites")
     
     //creates the given post in the posts collection
     func create(_ post: Post) async throws {
         let document = postsReference.document(post.id.uuidString) //uses the post's UUID string as a document path
         try await document.setData(from: post)
-    }
-    
-    private func fetchPosts(from query: Query) async throws -> [Post] {
-        let snapshot = try await query.order(by: "timestamp", descending: true).getDocuments()
-        let posts = snapshot.documents.compactMap { document in
-            try! document.data(as: Post.self)
-        }
-        return posts
     }
     
     //fetches all of the posts from Firestore and returns them in an array of Post objects
@@ -45,7 +39,19 @@ struct PostsRepository: PostsRepositoryProtocol {
     
     //fetches all of the posts from Firestore where the isFavorite field is equal to true and returns them in an array of Post objects
     func fetchFavoritedPosts() async throws -> [Post] {
-        return try await fetchPosts(from: postsReference.whereField("isFavorite", isEqualTo: true))
+        let favorites = try await fetchFavorites()
+        guard !favorites.isEmpty else { return [] }
+        let posts = try await postsReference
+            .whereField("id", in: favorites.map(\.uuidString))
+            .order(by: "timestamp", descending: true)
+            .getDocuments(as: Post.self)
+        return posts.map { post in
+            post.setting(\.isFavorite, to: true)
+        }
+    }
+    
+    func fetchPosts(by author: User) async throws -> [Post] {
+        return try await fetchPosts(from: postsReference.whereField("author.id", isEqualTo: author.id))
     }
     
     //deletes the given post in the posts collection
@@ -56,13 +62,65 @@ struct PostsRepository: PostsRepositoryProtocol {
     }
     
     func favorite(_ post: Post) async throws {
-        let document = postsReference.document(post.id.uuidString)
-        try await document.setData(["isFavorite": true], merge: true)
+        let favorite = Favorite(postId: post.id, userId: currentUser.id)
+        let document = favoritesReference.document(favorite.id)
+        try await document.setData(from: favorite)
     }
     
     func unfavorite(_ post: Post) async throws {
-        let document = postsReference.document(post.id.uuidString)
-        try await document.setData(["isFavorite": false], merge: true)
+        let favorite = Favorite(postId: post.id, userId: currentUser.id)
+        let document = favoritesReference.document(favorite.id)
+        try await document.delete()
+    }
+}
+
+private extension PostsRepository {
+    struct Favorite: Codable, Identifiable {
+        var id: String {
+            postId.uuidString + "-" + userId
+        }
+        let postId: Post.ID
+        let userId: User.ID
+    }
+    
+    func fetchFavorites() async throws -> [Post.ID] {
+        return try await favoritesReference
+            .whereField("userId", isEqualTo: currentUser.id)
+            .getDocuments(as: Favorite.self)
+            .map(\.postId)
+    }
+    
+    func fetchPosts(from query: Query) async throws -> [Post] {
+        let (posts, favorites) = try await (
+            query.order(by: "timestamp", descending: true).getDocuments(as: Post.self),
+            fetchFavorites()
+        )
+        return posts.map { post in
+            post.setting(\.isFavorite, to: favorites.contains(post.id))
+        }
+    }
+}
+
+extension PostsRepositoryProtocol {
+    func canDelete(_ post: Post) -> Bool {
+        post.author.id == currentUser.id //returns true when the post's author ID mathches the ID of the current user
+    }
+}
+
+private extension Post {
+    func setting<T>(_ property: WritableKeyPath<Post, T>, to newValue: T) -> Post {
+        var post = self
+        post[keyPath: property] = newValue
+        return post
+    }
+}
+
+private extension Query {
+    func getDocuments<T: Decodable>(as type: T.Type) async throws -> [T] {
+        let snapshot = try await getDocuments()
+        return snapshot.documents.compactMap { document in
+            try! document.data(as: type)
+        }
     }
 }
 
@@ -101,6 +159,10 @@ struct PostsRepositoryStub: PostsRepositoryProtocol {
         return try await state.simulate()
     }
     
+    func fetchPosts(by author: User) async throws -> [Post] {
+        return try await state.simulate()
+    }
+    
     //does nothing
     func create(_ post: Post) async throws {}
     
@@ -114,8 +176,4 @@ struct PostsRepositoryStub: PostsRepositoryProtocol {
 }
 #endif
 
-extension PostsRepositoryProtocol {
-    func canDelete(_ post: Post) -> Bool {
-        post.author.id == currentUser.id //returns true when the post's author ID mathches the ID of the current user
-    }
-}
+
