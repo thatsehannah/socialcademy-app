@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BD446C6F2A02E02200D3D618 /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446C6E2A02E02200D3D618 /* ViewModelFactory.swift */; };
+		BD446C732A058BE200D3D618 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446C722A058BE200D3D618 /* Comment.swift */; };
 		BD5EBCA929F0C81800C24E8E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5EBCA829F0C81800C24E8E /* MainTabView.swift */; };
 		BD5EBCAC29F4C9EC00C24E8E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BD5EBCAB29F4C9EC00C24E8E /* FirebaseAuth */; };
 		BD5EBCAF29F5826D00C24E8E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5EBCAE29F5826D00C24E8E /* AuthService.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		BD446C6E2A02E02200D3D618 /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
+		BD446C722A058BE200D3D618 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		BD5EBCA829F0C81800C24E8E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		BD5EBCAE29F5826D00C24E8E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		BD5EBCB029F585F700C24E8E /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			children = (
 				BDA55BD829E5D4FE009D40B9 /* Post.swift */,
 				BD9CDC2A29FF449F00D92E8B /* User.swift */,
+				BD446C722A058BE200D3D618 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				BD5EBCAF29F5826D00C24E8E /* AuthService.swift in Sources */,
 				BDA55C1029E8D2D6009D40B9 /* AlertError.swift in Sources */,
 				BD5EBCB929F59DED00C24E8E /* ProfileView.swift in Sources */,
+				BD446C732A058BE200D3D618 /* Comment.swift in Sources */,
 				BDA55C0329E6E795009D40B9 /* NewPostForm.swift in Sources */,
 				BDA55BDD29E5D602009D40B9 /* PostsList.swift in Sources */,
 				BD5EBCB129F585F700C24E8E /* AuthViewModel.swift in Sources */,
