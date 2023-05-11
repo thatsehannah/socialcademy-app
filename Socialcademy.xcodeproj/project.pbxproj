@@ -14,6 +14,8 @@
 		BD446C792A0C18EE00D3D618 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446C782A0C18EE00D3D618 /* CommentsViewModel.swift */; };
 		BD446C7B2A0C19D700D3D618 /* CommentsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446C7A2A0C19D700D3D618 /* CommentsList.swift */; };
 		BD446C7D2A0C1C3C00D3D618 /* CommentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446C7C2A0C1C3C00D3D618 /* CommentRow.swift */; };
+		BD446C7F2A0C26DE00D3D618 /* CommentRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446C7E2A0C26DE00D3D618 /* CommentRowViewModel.swift */; };
+		BD446C812A0C28EF00D3D618 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446C802A0C28EF00D3D618 /* ErrorHandler.swift */; };
 		BD5EBCA929F0C81800C24E8E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5EBCA829F0C81800C24E8E /* MainTabView.swift */; };
 		BD5EBCAC29F4C9EC00C24E8E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BD5EBCAB29F4C9EC00C24E8E /* FirebaseAuth */; };
 		BD5EBCAF29F5826D00C24E8E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5EBCAE29F5826D00C24E8E /* AuthService.swift */; };
@@ -50,6 +52,8 @@
 		BD446C782A0C18EE00D3D618 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 		BD446C7A2A0C19D700D3D618 /* CommentsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsList.swift; sourceTree = "<group>"; };
 		BD446C7C2A0C1C3C00D3D618 /* CommentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRow.swift; sourceTree = "<group>"; };
+		BD446C7E2A0C26DE00D3D618 /* CommentRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRowViewModel.swift; sourceTree = "<group>"; };
+		BD446C802A0C28EF00D3D618 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		BD5EBCA829F0C81800C24E8E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		BD5EBCAE29F5826D00C24E8E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		BD5EBCB029F585F700C24E8E /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				BD5EBCBC29F5AB6000C24E8E /* FormViewModel.swift */,
 				BD446C6E2A02E02200D3D618 /* ViewModelFactory.swift */,
 				BD446C782A0C18EE00D3D618 /* CommentsViewModel.swift */,
+				BD446C7E2A0C26DE00D3D618 /* CommentRowViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 			children = (
 				BDA55C0B29E7583D009D40B9 /* Loadable.swift */,
 				BD446C762A0C14E800D3D618 /* FirestoreExtensions.swift */,
+				BD446C802A0C28EF00D3D618 /* ErrorHandler.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -295,9 +301,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD5EBCBF29F5FC9300C24E8E /* PrimaryButtonStyle.swift in Sources */,
+				BD446C812A0C28EF00D3D618 /* ErrorHandler.swift in Sources */,
 				BD446C752A058C9700D3D618 /* CommentsRepository.swift in Sources */,
 				BDD1255C29EF1A8700060355 /* PostRowViewModel.swift in Sources */,
 				BDA55BD929E5D4FE009D40B9 /* Post.swift in Sources */,
+				BD446C7F2A0C26DE00D3D618 /* CommentRowViewModel.swift in Sources */,
 				BD446C7D2A0C1C3C00D3D618 /* CommentRow.swift in Sources */,
 				BDA55C0929E715CE009D40B9 /* PostsRepository.swift in Sources */,
 				BDA55C0C29E7583D009D40B9 /* Loadable.swift in Sources */,
