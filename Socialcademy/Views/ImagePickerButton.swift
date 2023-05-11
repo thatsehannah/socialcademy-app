@@ -60,7 +60,7 @@ extension ImagePickerButton {
             return imagePicker
         }
         
-        func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+        func updateUIViewController(_ imagePicker: UIImagePickerController, context: Context) {}
     }
     
     class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -70,8 +70,31 @@ extension ImagePickerButton {
             self.view = view
         }
         
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            view.dismiss()
+        }
+        
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            guard let imageURL = info[.imageURL] as? URL else { return }
+            var selectedImage: UIImage!
+            var imageURL: URL!
+            
+            if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                selectedImage = image
+            } else if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                selectedImage = image
+            }
+            
+            //when image comes from camera
+            if picker.sourceType == .camera {
+                let imgName = "\(UUID().uuidString).jpeg"
+                let documentDirectory = NSTemporaryDirectory()
+                let localPath = documentDirectory.appending(imgName)
+                let data = selectedImage.jpegData(compressionQuality: 0.3)! as NSData
+                data.write(toFile: localPath, atomically: true)
+                imageURL = URL.init(fileURLWithPath: localPath)
+            } else if let selectedImageURL = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+                imageURL = selectedImageURL
+            }
             view.onSelect(imageURL)
             view.dismiss()
         }

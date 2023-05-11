@@ -28,8 +28,15 @@ struct PostsRepository: PostsRepositoryProtocol {
     
     //creates the given post in the posts collection
     func create(_ post: Post) async throws {
-        let document = postsReference.document(post.id.uuidString) //uses the post's UUID string as a document path
-        try await document.setData(from: post)
+        var postToUpload = post
+        if let imageFileURL = postToUpload.imageURL {
+            postToUpload.imageURL = try await StorageFile
+                .with(namespace: "posts", identifier: postToUpload.id.uuidString)
+                .putFile(from: imageFileURL)
+                .getDownloadURL()
+        }
+        let document = postsReference.document(postToUpload.id.uuidString) //uses the post's UUID string as a document path
+        try await document.setData(from: postToUpload)
     }
     
     //fetches all of the posts from Firestore and returns them in an array of Post objects
@@ -59,6 +66,8 @@ struct PostsRepository: PostsRepositoryProtocol {
         precondition(canDelete(post))
         let document = postsReference.document(post.id.uuidString)
         try await document.delete()
+        let image = post.imageURL.map(StorageFile.atURL(_:))
+        try await image?.delete()
     }
     
     func favorite(_ post: Post) async throws {
