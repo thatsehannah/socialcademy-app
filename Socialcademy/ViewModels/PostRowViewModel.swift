@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 @dynamicMemberLookup //allows us to reference Post properties as if they're properties of this view model
-class PostRowViewModel: ObservableObject, ErrorHandler {
+class PostRowViewModel: ObservableObject, StateManager {
     typealias Action = () async throws -> Void
     
     @Published var post: Post
@@ -39,10 +39,10 @@ class PostRowViewModel: ObservableObject, ErrorHandler {
             preconditionFailure("Cannot delete post: no delete action provided")
         }
         
-        withErrorHandlingTask(perform: deleteAction)
+        withStateManagingTask(perform: deleteAction)
     }
     
     func favoritePost() {
-        withErrorHandlingTask(perform: favoriteAction)
+        withStateManagingTask(perform: favoriteAction)
     }
 }

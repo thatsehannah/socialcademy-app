@@ -15,7 +15,7 @@
 		BD446C7B2A0C19D700D3D618 /* CommentsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446C7A2A0C19D700D3D618 /* CommentsList.swift */; };
 		BD446C7D2A0C1C3C00D3D618 /* CommentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446C7C2A0C1C3C00D3D618 /* CommentRow.swift */; };
 		BD446C7F2A0C26DE00D3D618 /* CommentRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446C7E2A0C26DE00D3D618 /* CommentRowViewModel.swift */; };
-		BD446C812A0C28EF00D3D618 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446C802A0C28EF00D3D618 /* ErrorHandler.swift */; };
+		BD446C812A0C28EF00D3D618 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446C802A0C28EF00D3D618 /* StateManager.swift */; };
 		BD446CA12A0D338700D3D618 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = BD446CA02A0D338700D3D618 /* FirebaseStorage */; };
 		BD446CA32A0D347600D3D618 /* StorageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446CA22A0D347600D3D618 /* StorageFile.swift */; };
 		BD446CA52A0D390800D3D618 /* ImagePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD446CA42A0D390800D3D618 /* ImagePickerButton.swift */; };
@@ -45,6 +45,8 @@
 		BDA55C0E29E77860009D40B9 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55C0D29E77860009D40B9 /* EmptyListView.swift */; };
 		BDA55C1029E8D2D6009D40B9 /* AlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA55C0F29E8D2D6009D40B9 /* AlertError.swift */; };
 		BDD1255C29EF1A8700060355 /* PostRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1255B29EF1A8700060355 /* PostRowViewModel.swift */; };
+		BDFC73C72A0D93EF00D733A0 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC73C62A0D93EF00D733A0 /* ProfileViewModel.swift */; };
+		BDFC73C92A0D9AFF00D733A0 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC73C82A0D9AFF00D733A0 /* ProfileImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +58,7 @@
 		BD446C7A2A0C19D700D3D618 /* CommentsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsList.swift; sourceTree = "<group>"; };
 		BD446C7C2A0C1C3C00D3D618 /* CommentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRow.swift; sourceTree = "<group>"; };
 		BD446C7E2A0C26DE00D3D618 /* CommentRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRowViewModel.swift; sourceTree = "<group>"; };
-		BD446C802A0C28EF00D3D618 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		BD446C802A0C28EF00D3D618 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 		BD446CA22A0D347600D3D618 /* StorageFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageFile.swift; sourceTree = "<group>"; };
 		BD446CA42A0D390800D3D618 /* ImagePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerButton.swift; sourceTree = "<group>"; };
 		BD5EBCA829F0C81800C24E8E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -82,6 +84,8 @@
 		BDA55C0D29E77860009D40B9 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		BDA55C0F29E8D2D6009D40B9 /* AlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertError.swift; sourceTree = "<group>"; };
 		BDD1255B29EF1A8700060355 /* PostRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRowViewModel.swift; sourceTree = "<group>"; };
+		BDFC73C62A0D93EF00D733A0 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		BDFC73C82A0D9AFF00D733A0 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,7 @@
 				BD446C7A2A0C19D700D3D618 /* CommentsList.swift */,
 				BD446C7C2A0C1C3C00D3D618 /* CommentRow.swift */,
 				BD446CA42A0D390800D3D618 /* ImagePickerButton.swift */,
+				BDFC73C82A0D9AFF00D733A0 /* ProfileImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				BD446C6E2A02E02200D3D618 /* ViewModelFactory.swift */,
 				BD446C782A0C18EE00D3D618 /* CommentsViewModel.swift */,
 				BD446C7E2A0C26DE00D3D618 /* CommentRowViewModel.swift */,
+				BDFC73C62A0D93EF00D733A0 /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -222,7 +228,7 @@
 			children = (
 				BDA55C0B29E7583D009D40B9 /* Loadable.swift */,
 				BD446C762A0C14E800D3D618 /* FirestoreExtensions.swift */,
-				BD446C802A0C28EF00D3D618 /* ErrorHandler.swift */,
+				BD446C802A0C28EF00D3D618 /* StateManager.swift */,
 				BD446CA22A0D347600D3D618 /* StorageFile.swift */,
 			);
 			path = Utilities;
@@ -310,7 +316,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD5EBCBF29F5FC9300C24E8E /* PrimaryButtonStyle.swift in Sources */,
-				BD446C812A0C28EF00D3D618 /* ErrorHandler.swift in Sources */,
+				BDFC73C92A0D9AFF00D733A0 /* ProfileImage.swift in Sources */,
+				BD446C812A0C28EF00D3D618 /* StateManager.swift in Sources */,
 				BD446C752A058C9700D3D618 /* CommentsRepository.swift in Sources */,
 				BDD1255C29EF1A8700060355 /* PostRowViewModel.swift in Sources */,
 				BDA55BD929E5D4FE009D40B9 /* Post.swift in Sources */,
@@ -321,6 +328,7 @@
 				BDA55BDF29E5E164009D40B9 /* PostRow.swift in Sources */,
 				BDA55BB729E5C903009D40B9 /* SocialcademyApp.swift in Sources */,
 				BD446CA52A0D390800D3D618 /* ImagePickerButton.swift in Sources */,
+				BDFC73C72A0D93EF00D733A0 /* ProfileViewModel.swift in Sources */,
 				BD5EBCAF29F5826D00C24E8E /* AuthService.swift in Sources */,
 				BD446C7B2A0C19D700D3D618 /* CommentsList.swift in Sources */,
 				BDA55C1029E8D2D6009D40B9 /* AlertError.swift in Sources */,

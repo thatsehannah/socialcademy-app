@@ -10,9 +10,11 @@ import Foundation
 @MainActor
 class ViewModelFactory: ObservableObject {
     private let currentUser: User
+    private let authService: AuthService
     
-    init(currentUser: User) {
+    init(currentUser: User, authService: AuthService) {
         self.currentUser = currentUser
+        self.authService = authService
     }
     
     func makePostsViewModel(filter: PostsViewModel.PostFilter = .all) -> PostsViewModel {
@@ -23,11 +25,13 @@ class ViewModelFactory: ObservableObject {
         return CommentsViewModel(commentsRepository: CommentsRepository(user: currentUser, post: post))
     }
     
-    
+    func makeProfileViewModel() -> ProfileViewModel {
+        return ProfileViewModel(user: currentUser, authService: authService)
+    }
 }
 
 #if DEBUG
 extension ViewModelFactory {
-    static let preview = ViewModelFactory(currentUser: User.testUser)
+    static let preview = ViewModelFactory(currentUser: User.testUser, authService: AuthService())
 }
 #endif

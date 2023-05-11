@@ -38,6 +38,29 @@ class AuthService: ObservableObject {
     func signOut() throws {
         try auth.signOut()
     }
+    
+    func updateProfileImage(to imageFileURL: URL?) async throws {
+        guard let user = auth.currentUser else {
+            preconditionFailure("Cannot update profile for nil user")
+        }
+        guard let imageFileURL = imageFileURL else {
+            let changeRequest = user.createProfileChangeRequest()
+            changeRequest.photoURL = nil
+            try await changeRequest.commitChanges()
+            if let photoURL = user.photoURL {
+                try await StorageFile.atURL(photoURL).delete()
+            }
+            return
+        }
+        
+        let newPhotoURL = try await StorageFile
+            .with(namespace: "users", identifier: user.uid)
+            .putFile(from: imageFileURL)
+            .getDownloadURL()
+        let changeRequest = user.createProfileChangeRequest()
+        changeRequest.photoURL = newPhotoURL
+        try await changeRequest.commitChanges()
+    }
 }
 
 private extension FirebaseAuth.User {
@@ -52,5 +75,6 @@ private extension User {
     init(from firebaseUser: FirebaseAuth.User) {
         self.id = firebaseUser.uid
         self.name = firebaseUser.displayName ?? "No username"
+        self.imageURL = firebaseUser.photoURL
     }
 }
